@@ -593,6 +593,12 @@ body {
               <span>iDO CSW</span>
             </div>
           </li>
+          <li>
+            <div onclick="openApp('APPD')" class="icon-app" role="button" tabindex="0">
+              <i class="fas fa-file-invoice-dollar"></i>
+              <span>APPD</span>
+            </div>
+          </li>
         </ul>
       </div>
       <div class="back-btn-wrapper">
@@ -747,10 +753,11 @@ const APPS = {
   natalis:      { id: 'natalis',      label: 'NATALIS',      section: 'configuracion',  icon: 'fa-birthday-cake',   url: "https://internalcontrolengineering.github.io/NatalisCSW/" },
   cleaner:      { id: 'cleaner',      label: 'CLEANER',      section: 'configuracion',  icon: 'fa-trash-can',       url: "https://internalcontrolengineering.github.io/CleanerCSW/" },
   "borrador-sdci": { id: "borrador-sdci", label: "BORRADOR SDCI", section: 'configuracion', icon: "fa-eraser",     url: "https://internalcontrolengineering.github.io/borradorSDCI_CSW/" },
-  csw_donatarias: { id: 'csw_donatarias', label: 'CSW DONATARIAS', section: 'ingenieria', icon: 'fa-hand-holding-heart', url: "https://internalcontrolengineering.github.io/DonatariasCSW/" 
-  },
-iDO_CSW: { id: 'iDO_CSW', label: 'iDO CSW', section: 'ingenieria', icon: 'fas fa-id-card', url: "https://internalcontrolengineering.github.io/iDO/" 
-  }
+  csw_donatarias: { id: 'csw_donatarias', label: 'CSW DONATARIAS', section: 'ingenieria', icon: 'fa-hand-holding-heart', url: "https://internalcontrolengineering.github.io/DonatariasCSW/" },
+iDO_CSW: { id: 'iDO_CSW', label: 'iDO CSW', section: 'ingenieria', icon: 'fas fa-id-card', url: 
+"https://internalcontrolengineering.github.io/iDO/"},
+APPD: { id: 'APPD', label: 'APPD', section: 'ingenieria', icon: 'fas fa-file-invoice-dollar', url: 
+"https://internalcontrolengineering.github.io/APPerformanceDashboard/"}
 };
 
 const RECENT_KEY = 'recentApps';
