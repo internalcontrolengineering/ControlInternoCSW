@@ -599,6 +599,12 @@ body {
               <span>APPD</span>
             </div>
           </li>
+          <li>
+            <div onclick="openApp('PosTÚlate')" class="icon-app" role="button" tabindex="0">
+              <i class="fas fa-user-plus"></i>
+              <span>PosTÚlate</span>
+            </div>
+          </li>
         </ul>
       </div>
       <div class="back-btn-wrapper">
@@ -622,15 +628,31 @@ body {
   </div>
 
   <footer id="footer">
-    <div class="footer-names-container">
-      <div class="footer-left">
-        <span class="footer-name">Juan Pablo Ojeda González</span>
-        <span class="footer-title">Jefe de Control Interno</span>
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; width: 100%;">
+      <!-- Nombres arriba -->
+      <div class="footer-names-container">
+        <div class="footer-left">
+          <span class="footer-name">Juan Pablo Ojeda González</span>
+          <span class="footer-title">Jefe de Control Interno</span>
+        </div>
+        <div class="footer-divider"></div>
+        <div class="footer-right">
+          <span class="footer-name">Seidy Nayeli Dzul Puc</span>
+          <span class="footer-title">Coord. de Normas y Procedimientos</span>
+        </div>
       </div>
-      <div class="footer-divider"></div>
-      <div class="footer-right">
-        <span class="footer-name">Seidy Nayeli Dzul Puc</span>
-        <span class="footer-title">Coord. de Normas y Procedimientos</span>
+
+      <!-- Texto debajo (en columna) -->
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 4px; margin-top: 4px; padding-top: 6px; border-top: 1px solid rgba(255,255,255,0.1);">
+        <div style="display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap;">
+          <img src="https://raw.githubusercontent.com/internalcontrolengineering/Desarrollos/main/LogoCI-G.png" 
+               alt="Control Interno" 
+               style="height: 20px; width: auto; object-fit: contain; opacity: 0.6;">
+          <span style="font-size: 0.75rem; font-weight: 700; color: #c6a85b; letter-spacing: 1px;">Control Interno</span>
+        </div>
+        <div style="display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap;">
+          <span style="font-size: 0.6rem; color: rgba(255,255,255,0.7);">Ingeniería de Control</span>       
+        </div>
       </div>
     </div>
   </footer>
@@ -757,7 +779,9 @@ const APPS = {
 iDO_CSW: { id: 'iDO_CSW', label: 'iDO CSW', section: 'ingenieria', icon: 'fas fa-id-card', url: 
 "https://internalcontrolengineering.github.io/iDO/"},
 APPD: { id: 'APPD', label: 'APPD', section: 'ingenieria', icon: 'fas fa-file-invoice-dollar', url: 
-"https://internalcontrolengineering.github.io/APPerformanceDashboard/"}
+"https://internalcontrolengineering.github.io/APPerformanceDashboard/"},
+PosTÚlate: { id: 'PosTÚlate', label: 'PosTÚlate', section: 'ingenieria', icon: 'fas fa-user-plus', url: 
+"https://internalcontrolengineering.github.io/PosTUlate-CSW/"}
 };
 
 const RECENT_KEY = 'recentApps';
