@@ -208,8 +208,9 @@ body {
   display: flex;
   flex-direction: column;
   opacity: 0;
+  visibility: hidden;
   transform: translateY(24px);
-  transition: opacity .38s var(--ease), transform .38s var(--ease);
+  transition: opacity .38s var(--ease), transform .38s var(--ease), visibility .38s var(--ease);
   pointer-events: none;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
@@ -220,6 +221,7 @@ body {
 .section::-webkit-scrollbar { display: none; }
 .section.active {
   opacity: 1;
+  visibility: visible;
   transform: translateY(0);
   pointer-events: auto;
 }
@@ -295,19 +297,16 @@ body {
   margin-top: 5px;
 }
 /* Breakpoints para home blocks - siempre centrados */
-/* Pantallas muy grandes: 5 en una fila */
 @media (min-width: 1300px) {
   .main-block {
     width: 260px;
   }
 }
-/* Pantallas grandes: 5 en una fila más compactos */
 @media (min-width: 1100px) and (max-width: 1299px) {
   .main-block {
     width: 230px;
   }
 }
-/* Pantallas medianas-grandes: 5 en una fila */
 @media (min-width: 900px) and (max-width: 1099px) {
   .main-block {
     width: 210px;
@@ -316,13 +315,11 @@ body {
     gap: 20px;
   }
 }
-/* Pantallas donde no caben 5, pasan a 3 y 2 columnas */
 @media (min-width: 700px) and (max-width: 899px) {
   .main-block {
     width: 220px;
   }
 }
-/* Pantallas pequeñas: 2 columnas */
 @media (min-width: 480px) and (max-width: 699px) {
   .main-block {
     width: calc(50% - 30px);
@@ -333,7 +330,6 @@ body {
     gap: 20px;
   }
 }
-/* Pantallas muy pequeñas: 1 columna */
 @media (max-width: 479px) {
   .main-block {
     width: calc(100% - 40px);
@@ -442,7 +438,6 @@ body {
   max-width: 90%;
   word-break: break-word;
 }
-/* Breakpoints para grid de módulos - diferentes columnas centradas */
 @media (min-width: 1200px) {
   .grid {
     gap: 30px;
@@ -485,7 +480,6 @@ body {
     font-size: 0.55rem;
   }
 }
-/* Ajuste para pantallas muy pequeñas - 1 columna centrada */
 @media (max-width: 380px) {
   .grid {
     flex-direction: column;
@@ -524,93 +518,54 @@ body {
   border-color: rgba(198,168,91,0.95);
   transform: translateY(-2px);
 }
-/* ===== FOOTER RESPONSIVE CENTRADO ===== */
-#footer{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
+/* ===== FOOTER CORREGIDO - CENTRADO PERFECTO ===== */
+#footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: clamp(7px, 1.2vh, 11px) 14px;
   font-size: 0.70rem;
   line-height: 1.18;
   background: rgba(8,10,12,0.55);
   border-top: 1px solid rgba(255,255,255,0.03);
-  color: rgba(255,255,255,0.62);
   backdrop-filter: blur(6px);
-  flex-shrink:0;
-  width:100%;
+  flex-shrink: 0;
+  width: 100%;
   min-height: clamp(52px, 7.8vh, 68px);
 }
-.footer-names-container{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  width:100%;
-  max-width: 900px;
-  gap: 16px;
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 1200px;
+}
+/* Fila superior: dos nombres centrados uno al lado del otro */
+.footer-names {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
   flex-wrap: wrap;
+  width: 100%;
 }
-@media (max-width: 600px) {
-  .footer-names-container {
-    flex-direction: column;
-    gap: 12px;
-  }
-  .footer-divider {
-    display: none;
-  }
-  .footer-left, .footer-right {
-    align-items: center;
-    text-align: center;
-    padding: 0;
-  }
-  .footer-left {
-    align-items: center;
-    text-align: center;
-    padding-right: 0;
-  }
-  .footer-right {
-    align-items: center;
-    text-align: center;
-    padding-left: 0;
-  }
+.name-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
-.footer-left, .footer-right{
-  display:flex;
-  flex-direction:column;
-  padding: 2px 10px;
-  flex:1;
-}
-.footer-left{
-  align-items:flex-end;
-  text-align:right;
-  padding-right: 14px;
-}
-.footer-right{
-  align-items:flex-start;
-  text-align:left;
-  padding-left: 14px;
-}
-.footer-divider{
-  width:1px;
-  height: clamp(30px, 5.6vh, 44px);
-  background: rgba(255,255,255,0.12);
-  margin: 0 8px;
-}
-.footer-name{
+.footer-name {
   color: var(--gold);
   font-weight: 520;
   font-size: clamp(0.74rem, 2.1vw, 0.88rem);
-  margin-bottom: 1px;
+  margin-bottom: 2px;
   white-space: nowrap;
   opacity: 0.95;
 }
-@media (max-width: 480px) {
-  .footer-name {
-    white-space: normal;
-    word-break: keep-all;
-  }
-}
-.footer-title{
+.footer-title {
   font-size: clamp(0.50rem, 1.5vw, 0.60rem);
   opacity: 0.75;
   letter-spacing: 0.6px;
@@ -618,25 +573,50 @@ body {
   white-space: nowrap;
   text-transform: uppercase;
 }
-@media (max-width: 480px) {
-  .footer-title {
-    white-space: normal;
-    font-size: 0.55rem;
-  }
+/* Divisor entre nombres */
+.names-divider {
+  width: 1px;
+  height: clamp(30px, 5.6vh, 44px);
+  background: rgba(255,255,255,0.12);
 }
-/* Ajustes adicionales para móviles */
-@media (max-width: 768px) {
-  .quick-actions {
-    top: 5px;
-    right: 5px;
-    gap: 5px;
+/* Fila inferior: logos centrados */
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  width: 100%;
+}
+.footer-logo {
+  height: 20px;
+  width: auto;
+  object-fit: contain;
+  opacity: 0.6;
+}
+.footer-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #c6a85b;
+  letter-spacing: 1px;
+}
+.footer-sub {
+  font-size: 0.6rem;
+  color: rgba(255,255,255,0.7);
+}
+@media (max-width: 600px) {
+  .footer-names {
+    flex-direction: column;
+    gap: 15px;
   }
-  .qa-btn {
-    width: 32px;
-    height: 32px;
+  .names-divider {
+    display: none;
   }
-  .section {
-    padding: 10px 8px 15px;
+  .footer-name, .footer-title {
+    white-space: normal;
+    word-break: keep-all;
   }
 }
 </style>
@@ -649,7 +629,6 @@ body {
          class="logo" alt="Logo Control Interno" />
     <div class="header-depto">Departamento de Control Interno</div>
     <div class="header-subtitle">Administración Integral de Riesgos y Controles</div>
-    <!-- Quick Actions -->
     <div class="quick-actions">
       <button type="button" class="qa-btn" id="searchBtn" aria-label="Búsqueda rápida (Ctrl+K)">
         <i class="fas fa-magnifying-glass"></i>
@@ -661,7 +640,6 @@ body {
         <i class="fas fa-expand"></i>
       </button>
     </div>
-    <!-- Sección actual -->
     <div id="sectionPill" class="section-pill">
       <span class="dot"></span>
       <span class="label">Portal Ejecutivo</span>
@@ -673,33 +651,27 @@ body {
     <div id="home" class="section active">
       <div class="content-wrapper">
         <div class="home-blocks">
-          <!-- BLOQUE 1: NORMATIVIDAD INTERNA -->
           <div onclick="openSection('normatividad')" class="main-block" role="button" tabindex="0">
             <i class="fas fa-book-open"></i>
             <h2>NORMATIVIDAD INTERNA<br><span>Marco legal y regulatorio</span></h2>
           </div>
-          <!-- BLOQUE 2: GESTIÓN DE RIESGOS Y CONTROLES -->
           <div onclick="openSection('riesgos')" class="main-block" role="button" tabindex="0">
             <i class="fas fa-tachometer"></i>
             <h2>GESTIÓN DE RIESGOS Y CONTROLES<br><span>Identificación y mitigación</span></h2>
           </div>
-          <!-- BLOQUE 3: ADMINISTRACIÓN Y SEGUIMIENTO -->
           <div onclick="openSection('administracion')" class="main-block" role="button" tabindex="0">
             <i class="fas fa-clipboard-list"></i>
             <h2>ADMINISTRACIÓN Y SEGUIMIENTO<br><span>Monitoreo y cumplimiento</span></h2>
           </div>
-          <!-- BLOQUE 4: INGENIERÍA DE CONTROL -->
           <div onclick="openSection('ingenieria')" class="main-block" role="button" tabindex="0">
             <i class="fas fa-microchip"></i>
             <h2>INGENIERÍA DE CONTROL<br><span>Prevención & Trazabilidad</span></h2>
           </div>
-          <!-- BLOQUE 5: CULTURA Y LINEAMIENTOS -->
           <div onclick="openSection('cultura')" class="main-block" role="button" tabindex="0">
             <i class="fas fa-users"></i>
             <h2>CULTURA Y LINEAMIENTOS<br><span>Gestión del comportamiento</span></h2>
           </div>
         </div>
-        <!-- Recientes -->
         <div class="home-strip">
           <div class="strip-title"><i class="fas fa-clock"></i> Accesos recientes</div>
           <div id="recentList" class="recent-list"></div>
@@ -756,30 +728,10 @@ body {
     <div id="ingenieria" class="section">
       <div class="content-wrapper">
         <ul class="grid">
-          <li>
-            <div onclick="openApp('csw_donatarias')" class="icon-app" role="button" tabindex="0">
-              <i class="fas fa-hand-holding-heart"></i>
-              <span>CSW DONATARIAS</span>
-            </div>
-          </li>
-          <li>
-            <div onclick="openApp('iDO_CSW')" class="icon-app" role="button" tabindex="0">
-              <i class="fas fa-id-card"></i>
-              <span>iDO CSW</span>
-            </div>
-          </li>
-          <li>
-            <div onclick="openApp('APPD')" class="icon-app" role="button" tabindex="0">
-              <i class="fas fa-file-invoice-dollar"></i>
-              <span>APPD</span>
-            </div>
-          </li>
-          <li>
-            <div onclick="openApp('PosTÚlate')" class="icon-app" role="button" tabindex="0">
-              <i class="fas fa-user-plus"></i>
-              <span>PosTÚlate</span>
-            </div>
-          </li>
+          <li><div onclick="openApp('csw_donatarias')" class="icon-app" role="button" tabindex="0"><i class="fas fa-hand-holding-heart"></i><span>CSW DONATARIAS</span></div></li>
+          <li><div onclick="openApp('iDO_CSW')" class="icon-app" role="button" tabindex="0"><i class="fas fa-id-card"></i><span>iDO CSW</span></div></li>
+          <li><div onclick="openApp('APPD')" class="icon-app" role="button" tabindex="0"><i class="fas fa-file-invoice-dollar"></i><span>APPD</span></div></li>
+          <li><div onclick="openApp('PosTÚlate')" class="icon-app" role="button" tabindex="0"><i class="fas fa-user-plus"></i><span>PosTÚlate</span></div></li>
         </ul>
       </div>
       <div class="back-btn-wrapper">
@@ -792,7 +744,7 @@ body {
       <div class="content-wrapper">
         <ul class="grid">
           <li><div onclick="openApp('sdci')" class="icon-app" role="button" tabindex="0"><i class="fas fa-person-chalkboard"></i><span>SDCI</span></div></li>
-          <li><div onclick="openApp('ci')" class="icon-app" role="button" tabindex="0"><i class="fas fa-shield-alt"></i><span>CI</span></div></li>
+          <li><div onclick="openApp('ci')" class="icon-app" role="button" tabindex="0"><i class="fas fa-flag-checkered"></i><span>CI</span></div></li>
         </ul>
       </div>
       <div class="back-btn-wrapper">
@@ -816,31 +768,24 @@ body {
   </div>
 
   <footer id="footer">
-    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; width: 100%;">
-      <!-- Nombres arriba -->
-      <div class="footer-names-container">
-        <div class="footer-left">
+    <div class="footer-content">
+      <div class="footer-names">
+        <div class="name-item">
           <span class="footer-name">Juan Pablo Ojeda González</span>
           <span class="footer-title">Jefe de Control Interno</span>
         </div>
-        <div class="footer-divider"></div>
-        <div class="footer-right">
+        <div class="names-divider"></div>
+        <div class="name-item">
           <span class="footer-name">Seidy Nayeli Dzul Puc</span>
           <span class="footer-title">Coord. de Normas y Procedimientos</span>
         </div>
       </div>
-
-      <!-- Texto debajo (en columna) -->
-      <div style="display: flex; flex-direction: column; align-items: center; gap: 4px; margin-top: 4px; padding-top: 6px; border-top: 1px solid rgba(255,255,255,0.1);">
-        <div style="display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap;">
-          <img src="https://raw.githubusercontent.com/internalcontrolengineering/Desarrollos/main/LogoCI-G.png" 
-               alt="Control Interno" 
-               style="height: 20px; width: auto; object-fit: contain; opacity: 0.6;">
-          <span style="font-size: 0.75rem; font-weight: 700; color: #c6a85b; letter-spacing: 1px;">Control Interno</span>
-        </div>
-        <div style="display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap;">
-          <span style="font-size: 0.6rem; color: rgba(255,255,255,0.7);">Ingeniería de Control</span>       
-        </div>
+      <div class="footer-bottom">
+        <img src="https://raw.githubusercontent.com/internalcontrolengineering/Desarrollos/main/LogoCI-G.png" 
+             alt="Control Interno" 
+             class="footer-logo">
+        <span class="footer-label">Control Interno</span>
+        <span class="footer-sub">Ingeniería de Control</span>
       </div>
     </div>
   </footer>
@@ -860,7 +805,6 @@ body {
 </div>
 
 <style>
-/* Command Palette Styles */
 .cmd {
   position: fixed;
   inset: 0;
@@ -933,8 +877,6 @@ body {
 .cmd-title { font-weight: 500; font-size: 0.95rem; }
 .cmd-sub { font-size: 0.7rem; color: rgba(255,255,255,0.55); }
 .hidden { display: none; }
-
-/* Responsive para command palette */
 @media (max-width: 600px) {
   .cmd-panel {
     top: 10vh;
@@ -956,7 +898,6 @@ body {
 </style>
 
 <script>
-// Labels de secciones
 const SECTION_LABELS = {
   home: 'Portal Ejecutivo',
   normatividad: 'Normatividad Interna',
@@ -967,13 +908,12 @@ const SECTION_LABELS = {
   configuracion: 'Configuración'
 };
 
-// Apps (rutas)
 const APPS = {
   normativa360: { id: 'normativa360', label: 'NORMATIVA 360°', section: 'normatividad', icon: 'fa-file-signature', url: "https://internalcontrolengineering.github.io/CSWNormativa360/" },
   visum:        { id: 'visum',        label: 'VISUM',        section: 'normatividad', icon: 'fa-magnifying-glass-chart', url: "https://internalcontrolengineering.github.io/VisumCSW/" },
   glossarium:   { id: 'glossarium',   label: 'GLOSSARIUM',   section: 'normatividad', icon: 'fa-spell-check',     url: "https://internalcontrolengineering.github.io/GlossariumCSW/" },
   sdci:         { id: 'sdci',         label: 'SDCI',         section: 'cultura',      icon: 'fa-person-chalkboard', url: "https://internalcontrolengineering.github.io/SDCI_CSW/" },
-  ci:           { id: 'ci',           label: 'CI',           section: 'cultura',      icon: 'fa-shield-alt', url: "https://internalcontrolengineering.github.io/CI_CSW/" },
+  ci:           { id: 'ci',           label: 'CI',           section: 'cultura',      icon: 'fa-flag-checkered', url: "https://internalcontrolengineering.github.io/CI_CSW/" },
   marc:         { id: 'marc',         label: 'MARC',         section: 'riesgos',      icon: 'fa-gauge-high',      url: "https://internalcontrolengineering.github.io/MARC.CSW/" },
   novarum:      { id: 'novarum',      label: 'NOVARUM',      section: 'administracion', icon: 'fa-diagram-project', url: "https://internalcontrolengineering.github.io/NovarumCSW/" },
   tempus:       { id: 'tempus',       label: 'TEMPUS',       section: 'administracion', icon: 'fa-calendar-check',  url: "https://internalcontrolengineering.github.io/TempusCSW/" },
@@ -1045,7 +985,9 @@ function openSection(id, save = true) {
   closeCmd();
 }
 
-function goHome() { openSection('home'); }
+function goHome() { 
+  openSection('home'); 
+}
 
 function openApp(appId){
   const app = APPS[appId];
@@ -1059,7 +1001,6 @@ function openConfig() {
   openSection('configuracion');
 }
 
-// Command Palette
 function openCmd(){
   const root = document.getElementById('cmdPalette');
   root.classList.remove('hidden');
@@ -1111,13 +1052,11 @@ async function toggleFullscreen(){
   } catch(e) {}
 }
 
-// Restore last section
 (function restoreLastSection() {
   const last = localStorage.getItem('lastSection') || 'home';
   setTimeout(() => openSection(last, false), 10);
 })();
 
-// Event Listeners
 document.getElementById('searchBtn')?.addEventListener('click', openCmd);
 document.getElementById('configBtn')?.addEventListener('click', openConfig);
 document.getElementById('fsBtn')?.addEventListener('click', toggleFullscreen);
@@ -1142,7 +1081,6 @@ document.addEventListener('keydown', e => {
   }
 });
 
-// Initial render
 updateSectionPill(localStorage.getItem('lastSection') || 'home');
 renderRecents();
 </script>
