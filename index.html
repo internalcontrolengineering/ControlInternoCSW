@@ -690,7 +690,7 @@ body {
       <div class="content-wrapper">
         <ul class="grid">
           <li><div onclick="openApp('normativa360')" class="icon-app" role="button" tabindex="0"><i class="fas fa-file-signature"></i><span>NORMATIVA 360°</span></div></li>
-          <li><div onclick="openApp('visum')" class="icon-app" role="button" tabindex="0"><i class="fas fa-magnifying-glass-chart"></i><span>VISUM</span></div></li>
+          <li><div onclick="openApp('visum')" class="icon-app" role="button" tabindex="0"><i class="fas fa-ranking-star"></i><span>VISUM</span></div></li>
           <li><div onclick="openApp('glossarium')" class="icon-app" role="button" tabindex="0"><i class="fas fa-spell-check"></i><span>GLOSSARIUM</span></div></li>
         </ul>
       </div>
@@ -704,6 +704,7 @@ body {
       <div class="content-wrapper">
         <ul class="grid">
           <li><div onclick="openApp('marc')" class="icon-app" role="button" tabindex="0"><i class="fas fa-gauge-high"></i><span>MARC</span></div></li>
+          <li><div onclick="openApp('bia')" class="icon-app" role="button" tabindex="0"><i class="fas fa-magnifying-glass-chart"></i><span>BIA</span></div></li>
         </ul>
       </div>
       <div class="back-btn-wrapper">
@@ -735,7 +736,7 @@ body {
       <div class="content-wrapper">
         <ul class="grid">
           <li><div onclick="openApp('csw_donatarias')" class="icon-app" role="button" tabindex="0"><i class="fas fa-hand-holding-heart"></i><span>CSW DONATARIAS</span></div></li>
-          <li><div onclick="openApp('iDO_CSW')" class="icon-app" role="button" tabindex="0"><i class="fas fa-id-card"></i><span>iDO CSW</span></div></li>
+          <li><div onclick="openApp('ido')" class="icon-app" role="button" tabindex="0"><i class="fas fa-id-card"></i><span>iDO CSW</span></div></li>
           <li><div onclick="openApp('APPD')" class="icon-app" role="button" tabindex="0"><i class="fas fa-file-invoice-dollar"></i><span>APPD</span></div></li>
           <li><div onclick="openApp('PosTÚlate')" class="icon-app" role="button" tabindex="0"><i class="fas fa-user-plus"></i><span>PosTÚlate</span></div></li>
         </ul>
@@ -918,11 +919,12 @@ const SECTION_LABELS = {
 
 const APPS = {
   normativa360: { id: 'normativa360', label: 'NORMATIVA 360°', section: 'normatividad', icon: 'fa-file-signature', url: "https://internalcontrolengineering.github.io/CSWNormativa360/" },
-  visum:        { id: 'visum',        label: 'VISUM',        section: 'normatividad', icon: 'fa-magnifying-glass-chart', url: "https://internalcontrolengineering.github.io/VisumCSW/" },
+  visum:        { id: 'visum',        label: 'VISUM',        section: 'normatividad', icon: 'fas fa-ranking-star', url: "https://internalcontrolengineering.github.io/VisumCSW/" },
   glossarium:   { id: 'glossarium',   label: 'GLOSSARIUM',   section: 'normatividad', icon: 'fa-spell-check',     url: "https://internalcontrolengineering.github.io/GlossariumCSW/" },
   sdci:         { id: 'sdci',         label: 'SDCI',         section: 'cultura',      icon: 'fa-person-chalkboard', url: "https://internalcontrolengineering.github.io/SDCI_CSW/" },
-  ci:           { id: 'ci',           label: 'CI',           section: 'cultura',      icon: 'fa-flag-checkered', url: "https://internalcontrolengineering.github.io/CI_CSW/" },
+  ci:           { id: 'ci',           label: 'CI',           section: 'cultura',      icon: 'fa-flag-checkered', url: "https://internalcontrolengineering.github.io/CI/" },
   marc:         { id: 'marc',         label: 'MARC',         section: 'riesgos',      icon: 'fa-gauge-high',      url: "https://internalcontrolengineering.github.io/MARC.CSW/" },
+  bia:         { id: 'bia',         label: 'BIA',         section: 'riesgos',      icon: 'fas fa-magnifying-glass-chart',      url: "https://internalcontrolengineering.github.io/BIA/" },
   novarum:      { id: 'novarum',      label: 'NOVARUM',      section: 'administracion', icon: 'fa-diagram-project', url: "https://internalcontrolengineering.github.io/NovarumCSW/" },
   tempus:       { id: 'tempus',       label: 'TEMPUS',       section: 'administracion', icon: 'fa-calendar-check',  url: "https://internalcontrolengineering.github.io/TempusCSW/" },
   stride:       { id: 'stride',       label: 'STRIDE',       section: 'administracion', icon: 'fas fa-layer-group',  url: "https://internalcontrolengineering.github.io/Stride/" },
@@ -935,7 +937,7 @@ const APPS = {
   cleaner:      { id: 'cleaner',      label: 'CLEANER',      section: 'configuracion',  icon: 'fa-trash-can',       url: "https://internalcontrolengineering.github.io/CleanerCSW/" },
   "borrador-sdci": { id: "borrador-sdci", label: "BORRADOR SDCI", section: 'configuracion', icon: "fa-eraser",     url: "https://internalcontrolengineering.github.io/borradorSDCI_CSW/" },
   csw_donatarias: { id: 'csw_donatarias', label: 'CSW DONATARIAS', section: 'ingenieria', icon: 'fa-hand-holding-heart', url: "https://internalcontrolengineering.github.io/DonatariasCSW/" },
-  iDO_CSW: { id: 'iDO_CSW', label: 'iDO CSW', section: 'ingenieria', icon: 'fas fa-id-card', url: "https://internalcontrolengineering.github.io/iDO/"},
+  ido: { id: 'ido', label: 'iDO CSW', section: 'ingenieria', icon: 'fas fa-id-card', url: "https://internalcontrolengineering.github.io/iDO/"},
   APPD: { id: 'APPD', label: 'APPD', section: 'ingenieria', icon: 'fas fa-file-invoice-dollar', url: "https://internalcontrolengineering.github.io/APPerformanceDashboard/"},
   PosTÚlate: { id: 'PosTÚlate', label: 'PosTÚlate', section: 'ingenieria', icon: 'fas fa-user-plus', url: "https://internalcontrolengineering.github.io/PosTUlate-CSW/"}
 };
