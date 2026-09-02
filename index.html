@@ -670,7 +670,6 @@
       <span class="label">Portal Ejecutivo</span>
     </div>
   </header>
-
   <div class="icon-container">
     <!-- HOME -->
     <div id="home" class="section active">
@@ -703,11 +702,12 @@
         </div>
       </div>
     </div>
-
     <!-- NORMATIVIDAD -->
     <div id="normatividad" class="section">
       <div class="content-wrapper">
         <ul class="grid">
+          <!-- NUEVO: Matriz Documental (a la izquierda de Normativa 360) -->
+          <li><div onclick="openApp('matrizDocumental')" class="icon-app" role="button" tabindex="0"><i class="fas fa-table"></i><span>MATRIZ DOCUMENTAL</span></div></li>
           <li><div onclick="openApp('normativa360')" class="icon-app" role="button" tabindex="0"><i class="fas fa-file-signature"></i><span>NORMATIVA 360°</span></div></li>
           <li><div onclick="openApp('visum')" class="icon-app" role="button" tabindex="0"><i class="fas fa-ranking-star"></i><span>VISUM</span></div></li>
           <li><div onclick="openApp('glossarium')" class="icon-app" role="button" tabindex="0"><i class="fas fa-spell-check"></i><span>GLOSSARIUM</span></div></li>
@@ -717,7 +717,6 @@
         <button class="back-btn" onclick="goHome()">← Volver</button>
       </div>
     </div>
-
     <!-- RIESGOS -->
     <div id="riesgos" class="section">
       <div class="content-wrapper">
@@ -730,7 +729,6 @@
         <button class="back-btn" onclick="goHome()">← Volver</button>
       </div>
     </div>
-
     <!-- ADMINISTRACIÓN -->
     <div id="administracion" class="section">
       <div class="content-wrapper">
@@ -751,7 +749,6 @@
         <button class="back-btn" onclick="goHome()">← Volver</button>
       </div>
     </div>
-
     <!-- INGENIERÍA DE CONTROL (con Control de Gastos y Semáforo Donataria) -->
     <div id="ingenieria" class="section">
       <div class="content-wrapper">
@@ -768,7 +765,6 @@
         <button class="back-btn" onclick="goHome()">← Volver</button>
       </div>
     </div>
-
     <!-- CULTURA Y LINEAMIENTOS -->
     <div id="cultura" class="section">
       <div class="content-wrapper">
@@ -781,7 +777,6 @@
         <button class="back-btn" onclick="goHome()">← Volver</button>
       </div>
     </div>
-
     <!-- CONFIGURACIÓN -->
     <div id="configuracion" class="section">
       <div class="content-wrapper">
@@ -798,7 +793,6 @@
       </div>
     </div>
   </div>
-
   <footer id="footer">
     <div class="footer-content">
       <div class="footer-names">
@@ -824,7 +818,6 @@
     </div>
   </footer>
 </div>
-
 <!-- Command Palette -->
 <div id="cmdPalette" class="cmd hidden" aria-hidden="true">
   <div class="cmd-backdrop"></div>
@@ -837,7 +830,6 @@
     <ul id="cmdResults" class="cmd-results"></ul>
   </div>
 </div>
-
 <script>
   // ===================== CONFIGURACIÓN =====================
   const SECTION_LABELS = {
@@ -849,8 +841,9 @@
     cultura: 'Cultura y Lineamientos',
     configuracion: 'Configuración'
   };
-
   const APPS = {
+    // NUEVO: Matriz Documental
+    matrizDocumental: { id: 'matrizDocumental', label: 'MATRIZ DOCUMENTAL', section: 'normatividad', icon: 'fa-table', url: "https://internalcontrolengineering.github.io/Matriz-Documental/" },
     normativa360: { id: 'normativa360', label: 'NORMATIVA 360°', section: 'normatividad', icon: 'fa-file-signature', url: "https://internalcontrolengineering.github.io/CSWNormativa360/" },
     visum:        { id: 'visum',        label: 'VISUM',        section: 'normatividad', icon: 'fas fa-ranking-star', url: "https://internalcontrolengineering.github.io/VisumCSW/" },
     glossarium:   { id: 'glossarium',   label: 'GLOSSARIUM',   section: 'normatividad', icon: 'fa-spell-check',     url: "https://internalcontrolengineering.github.io/GlossariumCSW/" },
@@ -880,17 +873,14 @@
     controlGastos:  { id: 'controlGastos', label: 'CONTROL DE GASTOS', section: 'ingenieria', icon: 'fa-coins', url: "https://internalcontrolengineering.github.io/Control-de-Gastos/" },
     semaforoDonataria: { id: 'semaforoDonataria', label: 'SEMÁFORO DONATARIA', section: 'ingenieria', icon: 'fa-traffic-light', url: "https://internalcontrolengineering.github.io/Semaforo-Donaciones/" }
   };
-
   const RECENT_KEY = 'recentApps';
   const RECENT_LIMIT = 2;
-
   function updateSectionPill(id){
     const pill = document.getElementById('sectionPill');
     if(!pill) return;
     const label = SECTION_LABELS[id] || 'Portal Ejecutivo';
     pill.querySelector('.label').textContent = label;
   }
-
   function pushRecent(appId){
     let ids = JSON.parse(localStorage.getItem(RECENT_KEY) || '[]');
     ids = ids.filter(id => id !== appId);
@@ -898,7 +888,6 @@
     ids = ids.slice(0, RECENT_LIMIT);
     localStorage.setItem(RECENT_KEY, JSON.stringify(ids));
   }
-
   function renderRecents(){
     const container = document.getElementById('recentList');
     if(!container) return;
@@ -920,7 +909,6 @@
       container.appendChild(chip);
     });
   }
-
   function openSection(id, save = true) {
     document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
     const target = document.getElementById(id);
@@ -933,11 +921,9 @@
     if(id === 'home') renderRecents();
     closeCmd();
   }
-
   function goHome() { 
     openSection('home'); 
   }
-
   function openApp(appId){
     const app = APPS[appId];
     if(!app) return;
@@ -945,11 +931,9 @@
     pushRecent(appId);
     window.location.href = app.url;
   }
-
   function openConfig() {
     openSection('configuracion');
   }
-
   function openCmd(){
     const root = document.getElementById('cmdPalette');
     root.classList.remove('hidden');
@@ -958,11 +942,9 @@
     renderCmdResults('');
     setTimeout(() => input.focus(), 10);
   }
-
   function closeCmd(){
     document.getElementById('cmdPalette').classList.add('hidden');
   }
-
   function renderCmdResults(q){
     const query = (q || '').trim().toLowerCase();
     const ul = document.getElementById('cmdResults');
@@ -990,7 +972,6 @@
       ul.appendChild(li);
     });
   }
-
   async function toggleFullscreen(){
     try {
       if (!document.fullscreenElement) {
@@ -1000,12 +981,10 @@
       }
     } catch(e) {}
   }
-
   (function restoreLastSection() {
     const last = localStorage.getItem('lastSection') || 'home';
     setTimeout(() => openSection(last, false), 10);
   })();
-
   document.getElementById('searchBtn')?.addEventListener('click', openCmd);
   document.getElementById('configBtn')?.addEventListener('click', openConfig);
   document.getElementById('fsBtn')?.addEventListener('click', toggleFullscreen);
@@ -1013,7 +992,6 @@
   document.getElementById('cmdPalette')?.addEventListener('click', e => {
     if(e.target.classList.contains('cmd-backdrop')) closeCmd();
   });
-
   document.addEventListener('keydown', e => {
     const k = e.key.toLowerCase();
     if ((e.ctrlKey || e.metaKey) && k === 'k') {
@@ -1029,7 +1007,6 @@
       }
     }
   });
-
   updateSectionPill(localStorage.getItem('lastSection') || 'home');
   renderRecents();
 </script>
